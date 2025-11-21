@@ -1,4 +1,4 @@
-name: Production Release asset-processor
+name: Production Release grafana-oncall
 
 on:
   workflow_dispatch:
@@ -18,12 +18,11 @@ on:
 
 env:
   WORKLOAD_NAME: grafana-oncall
-  BUILD_RUNNER: "blacksmith-2vcpu-ubuntu-2204"
-  DOCKERFILE_PATH: engine/Dockerfile.prod
+  BUILD_RUNNER: "blacksmith-4vcpu-ubuntu-2204"
   DOCKERFILE_CONTEXT_PATH: engine
+  DOCKERFILE_PATH: engine/Dockerfile
   DOCKER_BUILDARGS: |
     BUILDKIT_INLINE_CACHE=1
-  GAR_REPOSITORY: grafana/oncall
 
 
 concurrency:
