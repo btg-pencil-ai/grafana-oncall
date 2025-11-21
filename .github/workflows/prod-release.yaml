@@ -23,7 +23,6 @@ env:
   DOCKERFILE_CONTEXT_PATH: engine
   DOCKER_BUILDARGS: |
     BUILDKIT_INLINE_CACHE=1
-  GAR_REPOSITORY: grafana/oncall
 
 
 
@@ -112,8 +111,8 @@ jobs:
         id: get-image
         run: |
           IMAGE_TAG=${{ github.event.inputs.release_version }}
-          echo "IMAGE=${{ env.GCLOUD_PROJECT }}/${{ env.GAR_REPOSITORY }}/${{ env.WORKLOAD_NAME }}:$IMAGE_TAG" >> $GITHUB_OUTPUT
-          echo ":sunny: Image -->  ${{ env.GCLOUD_PROJECT }}/${{ env.GAR_REPOSITORY }}/${{ env.WORKLOAD_NAME }}:$IMAGE_TAG" >> $GITHUB_STEP_SUMMARY
+          echo "IMAGE=${{ env.GCLOUD_PROJECT }}/${{ vars.GAR_REPOSITORY }}/${{ env.WORKLOAD_NAME }}:$IMAGE_TAG" >> $GITHUB_OUTPUT
+          echo ":sunny: Image -->  ${{ env.GCLOUD_PROJECT }}/${{ vars.GAR_REPOSITORY }}/${{ env.WORKLOAD_NAME }}:$IMAGE_TAG" >> $GITHUB_STEP_SUMMARY
 
       - name: Build and push to GAR
         uses: docker/build-push-action@v5.1.0
